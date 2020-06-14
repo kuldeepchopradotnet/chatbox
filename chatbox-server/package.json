@@ -1,0 +1,22 @@
+{
+  "name": "boomcast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon  index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "desktop-screenshot": "^0.1.1",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "record-screen": "^3.16.0",
+    "require": "^2.4.20",
+    "screen-stream": "^0.4.0",
+    "screenshot-desktop": "^1.12.1",
+    "socket.io": "^2.3.0"
+  }
+}
