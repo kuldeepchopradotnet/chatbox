@@ -1,0 +1,100 @@
+<div class="container mt-5">
+
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+  
+        <div class="card">
+          <div class="card-body">
+            <div class="tab1" *ngIf="activeTab == 1">
+              <form (submit)="addUser(regForm.form.value)" #regForm="ngForm" autocomplete="off">
+                <div class="form-group">
+                  <label for="email">Register with email address</label>
+                  <input type="email" name="name" [(ngModel)]="userEmailID" class="form-control" placeholder="Enter email"
+                    id="name" #userEmail="ngModel">
+                </div>
+                <button type="submit" class="btn btn-primary mx-auto" style="width: 200px;">Sign Up</button>
+              </form>
+            </div>
+  
+  
+            <div class=" tab2" *ngIf="activeTab == 2">
+  
+              <h6>Rooms</h6>
+              <div style="height: 312px;">
+                <ul class="list-group h-75 d-inline-block" style="width: 100%;">
+                  <li *ngFor="let r of rooms" class="list-group-item" (click)="enterRoom(r)"
+                    [ngClass]="{'active': r == activeRoom}">
+                    {{r}}
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-3">
+                <form (submit)="addRoom(roomForm.form.value);roomForm.reset()" #roomForm="ngForm">
+  
+                  <div class="input-group mb-3">
+                    <input type="text" [(ngModel)]="roomName" name="roomName" class="form-control"
+                      placeholder="Enter Room Name" aria-label="Enter Room Name" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-plus-circle"
+                          aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+  
+  
+                </form>
+              </div>
+            </div>
+  
+  
+  
+            <div class=" tab3" *ngIf="activeTab == 3">
+              <h6>{{activeRoom}}</h6>
+  
+              <div style="height: 312px;position: relative;">
+                <ul class="list-group d-inline-block msg-content" style="width: 100%;" id="msgbody" (domChange)="onDomChange($event)">
+                  <li class="list-group-item borderless paddingless" *ngFor="let chat of chatDb">
+                    <div
+                      [ngClass]="{'chat-msg-box mt-2':true, 'float-right msg-right': chat.receiver != userEmailID,'float-left  msg-left': chat.receiver == userEmailID}">
+                      <small class="date-small float-right">{{chat.date}}</small>
+                      <div class="msg">{{chat.msg}}</div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-3">
+                <form method="POST" (submit)="sendMsg(msgForm.form.value); msgForm.reset()" #msgForm="ngForm">
+                  <div class="input-group mb-3">
+                    <input type="text" name="msg" [(ngModel)]="msg" class="form-control" placeholder="Enter Message"
+                      aria-label="Enter Message" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-paper-plane"
+                          aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+  
+            </div>
+  
+  
+  
+  
+          </div>
+        </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+  
+  
+  
+  </div>
